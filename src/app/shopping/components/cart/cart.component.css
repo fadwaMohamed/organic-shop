@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+td > img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin: 1rem 0;
+}
+
+.widthTd {
+  width: 10rem;
+}
+
+.empty {
+  width: 20rem;
+  height: 20rem;
+  object-fit: scale-down;
+}

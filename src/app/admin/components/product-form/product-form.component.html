@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-7">
+    <form class="example-form" [formGroup]="form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="title"
+          placeholder="Ex. orange"
+        />
+        <mat-error *ngIf="formCtls?.['title']?.hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Price</mat-label>
+        <span matSuffix class="ms-2">$ &nbsp;</span>
+        <input
+          type="number"
+          matInput
+          formControlName="price"
+          placeholder="Ex. 2.5"
+        />
+        <mat-error *ngIf="formCtls?.['price']?.hasError('required')">
+          Price is <strong>required</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="!formCtls?.['price']?.hasError('required') && formCtls?.['price']?.hasError('min')"
+        >
+          Price should be greater or equal to <strong>Zero</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option
+            *ngFor="let category of categories$ | async"
+            [value]="category.key"
+          >
+            {{ category.payload.val().name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Image URL</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="image"
+          placeholder="Ex. https://assets/55.jpg"
+        />
+        <mat-error *ngIf="formCtls?.['image']?.hasError('required')">
+          Image URL is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="mb-2"
+        (click)="addProduct()"
+        *ngIf="!key"
+        [disabled]="form.invalid"
+      >
+        Add
+      </button>
+
+      <ng-container *ngIf="key">
+        <button
+          mat-raised-button
+          color="primary"
+          class="mb-2"
+          (click)="editProduct()"
+          [disabled]="form.invalid || form.pristine"
+        >
+          Save
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          class="mb-2 ms-2"
+          (click)="openDialog(modal)"
+        >
+          Delete
+        </button>
+      </ng-container>
+    </form>
+  </div>
+
+  <div class="col-5 pt-4">
+    <product-card [product]="form.value" [showActions]="false"></product-card>
+  </div>
+</div>
+
+<!-- delete confirmation -->
+<ng-template #modal let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete Post</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure?</p>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button class="mb-2 ms-2" (click)="d('Cross click')">
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="mb-2 ms-2"
+      (click)="deleteProduct(modal)"
+    >
+      Delete
+    </button>
+  </div>
+</ng-template>

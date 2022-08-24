@@ -1,0 +1,60 @@
+<form class="example-form mb-5" [formGroup]="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      placeholder="Ex. fadwa"
+    />
+    <mat-error *ngIf="formCtls?.['name']?.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Address 1</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="address1"
+      placeholder="Line 1"
+    />
+    <mat-error *ngIf="formCtls?.['address1']?.hasError('required')">
+      Address1 is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Address 2</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="address2"
+      placeholder="Line 2"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>City</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="city"
+      placeholder="Ex. cairo"
+    />
+    <mat-error *ngIf="formCtls?.['city']?.hasError('required')">
+      City URL is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="mb-2"
+    (click)="placeOrder()"
+    [disabled]="form.invalid"
+  >
+    Place Order
+  </button>
+</form>

@@ -1,0 +1,21 @@
+<div class="sticky-top">
+  <mat-selection-list #categories [multiple]="false" class="p-0">
+    <mat-divider></mat-divider>
+    <a routerLink="/">
+      <mat-list-option value="" [selected]="category == undefined">
+        All Categories
+      </mat-list-option>
+    </a>
+    <mat-divider></mat-divider>
+    <a
+      routerLink="/"
+      *ngFor="let c of categories$ | async"
+      [queryParams]="{ category: c.key }"
+    >
+      <mat-list-option [value]="c.key" [selected]="category == c.key">
+        {{ c.payload.val().name }}
+      </mat-list-option>
+      <mat-divider></mat-divider>
+    </a>
+  </mat-selection-list>
+</div>

@@ -1,0 +1,64 @@
+<div
+  class="card"
+  [class.border-0]="onlyQuantity"
+  *ngIf="product.title || product.price"
+>
+  <ng-container *ngIf="!onlyQuantity">
+    <img
+      [src]="product.image"
+      class="card-img-top"
+      alt="{{ product.title }}"
+      *ngIf="product.image"
+    />
+    <div class="card-body">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">
+          {{ product.price | currency }}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+
+  <div
+    *ngIf="showActions"
+    class="card-footer p-0 d-flex justify-content-between align-items-center"
+    [class.border-0]="!quantity || onlyQuantity"
+    [class.footerP]="onlyQuantity"
+  >
+    <ng-container *ngIf="quantity; else add">
+      <button
+        mat-flat-button
+        color="primary"
+        class="cartBtn"
+        (click)="changeQuantity(false)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+
+      <h5 class="m-0">
+        {{ quantity }}
+      </h5>
+
+      <button
+        mat-flat-button
+        color="primary"
+        class="cartBtn"
+        (click)="changeQuantity(true)"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+
+    <ng-template #add>
+      <button
+        mat-flat-button
+        color="primary"
+        class="w-100"
+        (click)="changeQuantity(true)"
+      >
+        Add to Cart
+      </button>
+    </ng-template>
+  </div>
+</div>

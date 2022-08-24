@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 col-md-3 mb-5">
+    <product-filter [category]="category"></product-filter>
+  </div>
+
+  <div class="col-12 col-md-9">
+    <div class="row">
+      <ng-container *ngFor="let product of filteredProducts">
+        <div class="col-12 col-md-6 mb-5 d-flex justify-content-center">
+          <product-card
+            [product]="product"
+            class="w-100"
+            [quantity]="cart?.productQuantity(product) || 0"
+          ></product-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

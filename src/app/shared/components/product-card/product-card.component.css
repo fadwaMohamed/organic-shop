@@ -1,0 +1,22 @@
+.card-img-top {
+  height: 20rem;
+  object-fit: cover;
+  border-bottom: 1px solid lightgrey;
+}
+
+button {
+  height: 3rem;
+  font-size: 1.1rem;
+}
+
+.cartBtn {
+  width: 3.7rem;
+}
+
+.footerP {
+  background-color: white;
+  width: 60%;
+}
+.footerP > button {
+  transform: scale(0.7);
+}

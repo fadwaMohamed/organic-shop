@@ -1,0 +1,18 @@
+<div class="card mx-3 p-3 mb-4" *ngIf="cart">
+  <div class="card-body px-0">
+    <h3 class="card-title">Order Summary</h3>
+    <p class="card-text">
+      You have {{ cart.totalItemsCount }} items in your shopping cart.
+    </p>
+  </div>
+  <ul class="list-group list-group-flush" *ngFor="let c of cart.items">
+    <li class="list-group-item d-flex justify-content-between">
+      <span>{{ c.quantity }} x {{ c.title }}</span>
+      <span>{{ c.totalPrice | currency }}</span>
+    </li>
+  </ul>
+  <div class="card-body d-flex justify-content-between fw-bold">
+    <span>Total</span>
+    <span>{{ cart.totalCartPrice | currency }}</span>
+  </div>
+</div>

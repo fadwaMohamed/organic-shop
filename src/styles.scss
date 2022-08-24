@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~font-awesome/css/font-awesome.css";
+
+$primary-color: #3f51b5;
+
+body {
+  padding-top: 80px;
+
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+
+//////////////////////////////////////////
+
+.navbar {
+  border-bottom: 3px solid #e7e7e7;
+}
+
+.navbar-brand,
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: $primary-color;
+}
+
+.navbar-brand:hover {
+  opacity: 0.7;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $primary-color;
+}
